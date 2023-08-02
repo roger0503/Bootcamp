@@ -1,91 +1,91 @@
-1. User:
-public class User {
-    private int userId;
+
+1. User class
+class User {
+    private String userId;
     private String name;
     private String email;
     private List<Order> orders;
 
-    public User(int userId, String name, String email) {
+    public User(String userId, String name, String email) {
         this.userId = userId;
         this.name = name;
         this.email = email;
         this.orders = new ArrayList<>();
     }
+
     public void addOrder(Order order) {
         this.orders.add(order);
     }
 
-2. Book:
-public class Book {
-    private int bookId;
+}
+
+2. Book class
+class Book {
+    private String bookId;
     private String title;
     private String author;
     private double price;
 
-    public Book(int bookId, String title, String author, double price) {
+    public Book(String bookId, String title, String author, double price) {
         this.bookId = bookId;
         this.title = title;
         this.author = author;
         this.price = price;
     }
-    public void addBook(Book book) {
-        // Add a book to the order
+
+    public String getTitle() {
+        return title;
     }
 
-    public void removeBook(Book book) {
-        // Remove a book from the order
-    }
+}
 
-    public double calculateTotalAmount() {
-        // Calculate and return the total order amount
-    }
-
-3. Order:
-public class Order {
-    private int orderId;
-    private LocalDateTime orderDate;
+3. Order class
+class Order {
+    private String orderId;
     private List<Book> books;
-    private Payment payment;
+    private double totalPrice;
 
-    public Order(int orderId) {
+    public Order(String orderId) {
         this.orderId = orderId;
-        this.orderDate = LocalDateTime.now();
         this.books = new ArrayList<>();
+        this.totalPrice = 0.0;
     }
+
     public void addBook(Book book) {
         this.books.add(book);
         this.totalPrice += book.getPrice();
     }
 
-4.Payment:
-public class Payment {
-    private int paymentId;
-    private double amount;
-    private String paymentMethod;
+}
 
-    public Payment(int paymentId, double amount, String paymentMethod) {
+4. Payment class
+class Payment {
+    private String paymentId;
+    private double amount;
+    private String status;
+
+    public Payment(String paymentId, double amount) {
         this.paymentId = paymentId;
         this.amount = amount;
-        this.paymentMethod = paymentMethod;
+        this.status = status;
     }
+
     public void makePayment() {
-        // Logic to process the payment (e.g., contacting a payment gateway)
         this.status = "Paid";
     }
 
-5. Cart:
-public class Cart {
-    private User user;
-    private List<Book> cartItems;
+}
+
+5. Cart class
+class Cart {
+    private List<Book> items;
+
+    public Cart() {
+        this.items = new ArrayList<>();
+    }
 
     public void addItem(Book book) {
-        // Add a book to the cart
+        this.items.add(book);
     }
 
-    public void removeItem(Book book) {
-        // Remove a book from the cart
-    }
-
-    public double calculateTotalAmount() {
-        // Calculate and return the total cart amount
-    }
+}
