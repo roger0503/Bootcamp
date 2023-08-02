@@ -1,0 +1,91 @@
+1. User:
+public class User {
+    private int userId;
+    private String name;
+    private String email;
+    private List<Order> orders;
+
+    public User(int userId, String name, String email) {
+        this.userId = userId;
+        this.name = name;
+        this.email = email;
+        this.orders = new ArrayList<>();
+    }
+    public void addOrder(Order order) {
+        this.orders.add(order);
+    }
+
+2. Book:
+public class Book {
+    private int bookId;
+    private String title;
+    private String author;
+    private double price;
+
+    public Book(int bookId, String title, String author, double price) {
+        this.bookId = bookId;
+        this.title = title;
+        this.author = author;
+        this.price = price;
+    }
+    public void addBook(Book book) {
+        // Add a book to the order
+    }
+
+    public void removeBook(Book book) {
+        // Remove a book from the order
+    }
+
+    public double calculateTotalAmount() {
+        // Calculate and return the total order amount
+    }
+
+3. Order:
+public class Order {
+    private int orderId;
+    private LocalDateTime orderDate;
+    private List<Book> books;
+    private Payment payment;
+
+    public Order(int orderId) {
+        this.orderId = orderId;
+        this.orderDate = LocalDateTime.now();
+        this.books = new ArrayList<>();
+    }
+    public void addBook(Book book) {
+        this.books.add(book);
+        this.totalPrice += book.getPrice();
+    }
+
+4.Payment:
+public class Payment {
+    private int paymentId;
+    private double amount;
+    private String paymentMethod;
+
+    public Payment(int paymentId, double amount, String paymentMethod) {
+        this.paymentId = paymentId;
+        this.amount = amount;
+        this.paymentMethod = paymentMethod;
+    }
+    public void makePayment() {
+        // Logic to process the payment (e.g., contacting a payment gateway)
+        this.status = "Paid";
+    }
+
+5. Cart:
+public class Cart {
+    private User user;
+    private List<Book> cartItems;
+
+    public void addItem(Book book) {
+        // Add a book to the cart
+    }
+
+    public void removeItem(Book book) {
+        // Remove a book from the cart
+    }
+
+    public double calculateTotalAmount() {
+        // Calculate and return the total cart amount
+    }
